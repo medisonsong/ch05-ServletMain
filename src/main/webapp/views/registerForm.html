@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+</head>
+<body>
+<form action="/ch05-ServletMain/register" method="post">
+이름 : <input type="text" name="name"><br>
+나이 : <input type="text" name="age"><br>
+직업 : <input type="text" name="job"><br>
+<!-- 전화번호를 3구역으로 나눠서 명시하려고 함 (파라미터 name 일부러 동일)-->
+전화번호 : <input type="text" name="phone">-
+			<input type="text" name="phone">-
+			<input type="text" name="phone"><br>
+<input type="submit" value="전송"> 
+</form>
+</body>
+</html>
+
+<!-- 
+전화번호 입력 안했을 시 에러 안남..!
+(lunch 예시) checkbox -> 에러 (null / 전송이 안됨)
+text -> --로 표시 (빈 문자열)
+
+phone=""
+phone=""
+phone=""
+이런 식으로 전송된 후 배열이 만들어짐
+루프 돌면서 빈문자열이 출력되는거임
+ -->
