@@ -27,7 +27,7 @@ ID : <%= request.getParameter("id") %><br>
 %>
 			<%= values[i] %>
 <%			
-			}
+			} // end of for
 		out.println("<br>");
 		}
 %>
