@@ -3,7 +3,7 @@
 <%
 	//전송된 데이터 인코딩 처리
 	request.setCharacterEncoding("utf-8");
-%>
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,22 +30,21 @@ td.td-middle{
 td.td-width{
 	width:100px;
 }
-
 </style>
 </head>
 <body>
 <table>
 	<tr>
 		<td colspan="2">
-			<%-- include 태그의 내용(><사이) 으로 html 주석, JSP 주석 전부 사용 불가 --%>
+		    <%-- include 태그의 내용으로 html 주석, JSP 주석 전부 사용 불가  --%>
 			<jsp:include page="/ch05-actionTag/module/top.jsp">
-				<jsp:param value="코리아" name="company"/> <%-- parameter name:company value: 코리아 --%>
-			</jsp:include> 
+				<jsp:param value="코리아 홈쇼핑" name="company"/>
+			</jsp:include>
 		</td>
 	</tr>
 	<tr>
 		<td class="td-middle td-width">
-			<jsp:include page="/ch05-actionTag/module/left.jsp"/> <%-- page=""뒤에 /를 넣으면 단독태그로 바뀜 --%>
+			<jsp:include page="/ch05-actionTag/module/left.jsp"/>
 		</td>
 		<td class="td-middle">
 			<!-- 내용 시작 -->
