@@ -72,7 +72,7 @@
 	<div class="result-display">
 		<div class="align-center">
 			수정할 글 정보 호출 실패!<br>
-			<input type="button" value="게시판 목록" onclick="location.href='selectTest.jsp'">
+			<input type="button" value="목록" onclick="location.href='selectTest.jsp'">
 		</div>
 	</div>
 
@@ -83,7 +83,7 @@
 	<div class="result-display">
 		<div class="align-center">
 			오류 발생! 수정할 글 정보 호출 실패!<br>
-			<input type="button" value="게시판 목록" onclick="location.href='selectTest.jsp'">
+			<input type="button" value="목록" onclick="location.href='selectTest.jsp'">
 		</div>
 	</div>
 <%		
