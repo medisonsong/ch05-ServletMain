@@ -71,7 +71,7 @@
 %>
 	<div class="result-display">
 		<div class="align-center">
-			수정할 글 정보 호출 실패!<br>
+			오류 발생! 상품 정보 수정 폼 호출 실패!<br>
 			<input type="button" value="목록" onclick="location.href='selectTest.jsp'">
 		</div>
 	</div>
@@ -82,7 +82,7 @@
 %>
 	<div class="result-display">
 		<div class="align-center">
-			오류 발생! 수정할 글 정보 호출 실패!<br>
+			오류 발생! 상품 정보 수정 폼 호출 실패!<br>
 			<input type="button" value="목록" onclick="location.href='selectTest.jsp'">
 		</div>
 	</div>
