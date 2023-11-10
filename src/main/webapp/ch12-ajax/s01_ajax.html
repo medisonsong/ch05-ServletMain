@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery를 이용한 비동기 통신 구현</title>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	//서버 프로그램에 텍스트 정보를 요청
+	$.ajax({
+		url:'myString.jsp', 
+		success:function(param){
+			$('body').append(param);
+		}
+	});
+});
+</script>
+</head>
+<body>
+<!-- 
+AJAX : Asynchronus JavaScript And XML 자바스크립트와 XML/ JSON을 이용한 비동기 통신
+ -->
+</body>
+</html>
+<!-- 
+클라이언트 프로그램 안에 ajax   -------   서버프로그램:myString.jsp
+
+
+myString 안에 Hello ajax!! 를 ajax에게 보냄 (문자열로)
+->
+문자열을 받으면 서버와 연결이 성공했다고 간주, success:function()이 이벤트 핸들러랑 똑같은 역할
+Hello ajax를 $.ajax가 받고 아래 success:function(param) 여기 파람에 전달함
+
+ajax내부에서 function이 실행되는거
+주소를 보내고 정보를 받는게 다 ajax
+ -->
