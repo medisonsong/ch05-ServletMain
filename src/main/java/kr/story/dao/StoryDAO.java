@@ -29,14 +29,24 @@ public class StoryDAO {
 		String sql = null;
 		
 		try {
+			conn = DBUtil.getConnection();
+			sql = "INSERT INTO story (num,title,content,ip,snum) VALUES (story_seq.nextval,?,?,?,?)";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, storyVO.getTitle());
+			pstmt.setString(2, storyVO.getContent());
+			pstmt.setString(3, storyVO.getIp());
+			pstmt.setInt(4, storyVO.getSnum());
+			
+			pstmt.executeUpdate();
 			
 		}catch(Exception e) {
 			throw new Exception(e);
 		}finally {
-			
+			DBUtil.executeClose(null, pstmt, conn);
 		}
 	}
-	
 	
 	
 	//글 총개수

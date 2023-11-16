@@ -11,9 +11,18 @@ window.onload = function(){
 	let myForm = document.getElementById('write_form');
 	
 	myForm.onsubmit = function(){
-		let items = document.querySelectorAll('')
+		let items = document.querySelectorAll('input[type="text"],textarea');
+		for(let i=0; i<items.length; i++){
+			if(items[i].value.trim()==''){
+				let label = document.querySelector('label[for="'+items[i].id+'"]');
+	            alert(label.textContent + '항목은 필수 입력');
+	            items[i].value = '';
+	            items[i].focus();
+	            return false;
+	         }
+	      }
+	   };
 	};
-};
 </script>
 </head>
 <body>
@@ -26,15 +35,7 @@ window.onload = function(){
 				<input type="text" name="title" id="title" size="30" maxlength="50">
 			</li>
 			<li>
-				<label for="title">이름</label>
-				<input type="text" name="name" id="name" size="10" maxlength="10">
-			</li>
-			<li>
-				<label for="title">비밀번호</label>
-				<input type="password" name="passwd" id="passwd" size="10" maxlength="12">
-			</li>
-			<li>
-				<label for="title">내용</label>
+				<label for="content">내용</label>
 				<textarea rows="5" cols="40" name="content" id="content"></textarea>
 			</li>
 		</ul>

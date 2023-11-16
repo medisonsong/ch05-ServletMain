@@ -21,3 +21,4 @@ create table story(
    constraint story_pk primary key (num),
    constraint story_fk foreign key (snum) references semployee (snum)
 );
+create sequence story_seq;
