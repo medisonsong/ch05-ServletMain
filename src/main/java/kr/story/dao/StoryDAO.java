@@ -81,7 +81,7 @@ public class StoryDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		StoryVO story = null;
+		StoryVO vo = null;
 		String sql = null;
 		
 		try {
@@ -91,7 +91,7 @@ public class StoryDAO {
 		}finally {
 			DBUtil.executeClose(rs, pstmt, conn);
 		}
-		return story;
+		return vo;
 	}
 	
 	
