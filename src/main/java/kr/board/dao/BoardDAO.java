@@ -64,7 +64,17 @@ public class BoardDAO {
 		int count = 0;
 		
 		try {
-			
+			//커넥션풀로부터 커넥션을 할당
+			conn = DBUtil.getConnection();
+			//SQL문 작성
+			sql = "SELECT COUNT(*) FROM smboard"; // smboard로부터 전체 개수 읽어옴 (결과->1행)
+			//PreparedStatement 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			//SQL문 실행
+			rs = pstmt.executeQuery();
+			if(rs.next()) { //count는 출력 행이 하나기 때문에 if문 사용
+				count = rs.getInt(1); //본래는 COUNT(*)인데 기호가 들어가기도 하고, 값이 하나라서 그냥 컬럼 인덱스를 썼음 
+			}
 		}catch(Exception e) {
 			throw new Exception(e);
 		}finally {
@@ -87,9 +97,13 @@ public class BoardDAO {
 			//커넥션풀로부터 커넥션을 할당받음
 			conn = DBUtil.getConnection();
 			//SQL문 작성
-			sql = "SELECT * FROM smboard ORDER BY num DESC";
+			sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM smboard ORDER BY num DESC)a) WHERE rnum >= ? AND rnum <= ?";
 			//PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);
+			//?에 데이터 바인딩
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
 			//SQL문 실행
 			rs = pstmt.executeQuery();
 			
