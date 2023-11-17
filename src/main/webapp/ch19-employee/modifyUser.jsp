@@ -3,30 +3,32 @@
 <%@ page import="kr.employee.dao.EmployeeDAO" %>
 <%
 	Integer user_num = (Integer)session.getAttribute("user_num");
-	if(user_num == null){
+	if(user_num==null){//로그인이 되지 않은 경우
 		response.sendRedirect("loginForm.jsp");
 	}else{
-		request.setCharacterEncoding("utf-8");
+	//전송된 데이터에 대한 인코딩	
+	request.setCharacterEncoding("utf-8");
 %>
-<jsp:useBean id="vo" class="kr.employee.vo.EmployeeVO" />
-<jsp:setProperty name="vo" property="*" />
+<jsp:useBean id="employee" class="kr.employee.vo.EmployeeVO"/>
+<jsp:setProperty property="*" name="employee"/>
 <%
-	vo.setSnum(user_num);
-	EmployeeDAO dao = EmployeeDAO.getInstance();
-	dao.updateEmployee(vo);
-%>
+  	EmployeeDAO dao = EmployeeDAO.getInstance();
+	employee.setSnum(user_num);
+  	dao.updateEmployee(employee);
+ %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원정보 수정 완료</title>
+<title>회원정보수정 완료</title>
+<link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
 <div class="page-main">
-	<h1>회원정보 수정 완료</h1>
+	<h1>회원정보수정 완료</h1>
 	<div class="result-display">
-		<div class="align-center">
-			회원정보 수정 완료<br>
+	    <div class="align-center">
+			회원정보수정 완료!<br> 
 			<button onclick="location.href='myPage.jsp'">MyPage</button>
 		</div>
 	</div>
@@ -36,3 +38,9 @@
 <%
 	}
 %>
+
+
+
+
+
+

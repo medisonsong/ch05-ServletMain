@@ -3,8 +3,10 @@ package kr.employee.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import kr.employee.vo.EmployeeVO;
+import kr.story.dao.StoryDAO;
 import kr.util.DBUtil;
 
 public class EmployeeDAO {
@@ -141,19 +143,32 @@ public class EmployeeDAO {
 	//사원정보 삭제
 	public void deleteEmployee(int snum)throws Exception{
 		Connection conn = null;
-		PreparedStatement pstmt = null;
+		PreparedStatement pstmt1 = null;
+		PreparedStatement pstmt2 = null;
 		String sql = null;
 		
 		try {
 			conn = DBUtil.getConnection();
+			conn.setAutoCommit(false);
+			
+			sql = "DELETE FROM story WHERE snum=?";
+			pstmt1 = conn.prepareStatement(sql);
+			pstmt1.setInt(1, snum);
+			pstmt1.executeUpdate();
+			
 			sql = "DELETE FROM semployee WHERE snum=?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, snum);
-			pstmt.executeUpdate();
+			pstmt2 = conn.prepareStatement(sql);
+			pstmt2.setInt(1, snum);
+			pstmt2.executeUpdate();
+			
+			conn.commit();
+			 
 		}catch(Exception e) {
+			conn.rollback();
 			throw new Exception(e);
 		}finally {
-			DBUtil.executeClose(null, pstmt, conn);
+			DBUtil.executeClose(null, pstmt1, null);
+			DBUtil.executeClose(null, pstmt2, null);
 		}
 	}
 }

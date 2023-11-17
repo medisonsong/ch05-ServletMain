@@ -5,24 +5,28 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인 폼</title>
-<link rel="stylesheet" href="style.css">
-<script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="style.css" type="text/css">
 <script type="text/javascript">
-$(function(){
-	//이벤트 연결
-	$('#login_form').submit(function(){
-		if($('#id').val().trim()==''){
-			alert('아이디를 입력하세요');
-			$('#id').val('').focus();
-			return false;
-		}
-		if($('#passwd').val().trim()==''){
-			alert('비밀번호를 입력하세요');
-			$('#passwd').val('').focus();
-			return false;
-		}
-	});
-});
+   //alert(document.referrer);
+	window.onload=function(){
+		let form = document.getElementById('login_form');
+		form.onsubmit=function(){
+			var id = document.getElementById('id');
+			if(id.value.trim()==''){
+				alert('id를 입력하세요!');
+				id.focus();
+				id.value = '';
+				return false;
+			}
+			let passwd = document.getElementById('passwd');
+			if(passwd.value.trim()==''){
+				alert('비밀번호를 입력하세요!');
+				passwd.focus();
+				passwd.value = '';
+				return false;
+			}
+		};
+	};
 </script>
 </head>
 <body>
@@ -32,18 +36,25 @@ $(function(){
 		<ul>
 			<li>
 				<label for="id">아이디</label>
-				<input type="text" name="id" id="id" maxlength="12">
+				<input type="text" name="id" id="id" 
+				                maxlength="12">
 			</li>
 			<li>
 				<label for="passwd">비밀번호</label>
-				<input type="password" name="passwd" id="passwd" maxlength="12">
+				<input type="password" name="passwd" id="passwd" 
+				                maxlength="12">
 			</li>
 		</ul>
 		<div class="align-center">
 			<input type="submit" value="로그인">
-			<input type="button" value="홈으로" onclick="location.href='main.jsp'">
+			<input type="button" value="홈으로"
+			       onclick="location.href='main.jsp'">
 		</div>
 	</form>
 </div>
 </body>
 </html>
+
+
+
+
