@@ -5,14 +5,18 @@
 <%@ page import="java.util.List" %>
 <%@ page import="kr.util.PagingUtil" %>
 <%
+	//선택한 페이지 번호
 	String pageNum = request.getParameter("pageNum");
 
 	if(pageNum == null){
 		pageNum = "1";
 	}
 	
+	//한 화면에 몇개의 글을 보여줄지 지정
 	int rowCount = 10;
+	//한 화면에 몇개의 페이지를 보여줄지 지정
 	int pageCount = 10;
+	//현재 선택한 페이지 (String -> int)
 	int currentPage = Integer.parseInt(pageNum);
 	
 	StoryDAO dao = StoryDAO.getInstance();
